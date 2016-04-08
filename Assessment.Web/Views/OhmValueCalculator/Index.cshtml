@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-app="ohmValueCalculator">
+    <div ng-controller="ohmValueCalculatorController">
+        <div class="row row-margin">
+            <div class="col-md-3">
+                <select class="form-control" ng-model="bandASelectedItem" ng-options="item for item in resistorBandADropDown"></select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" ng-model="bandBSelectedItem" ng-options="item for item in resistorBandBDropDown"></select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" ng-model="bandCSelectedItem" ng-options="item for item in resistorBandCDropDown"></select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" ng-model="bandDSelectedItem" ng-options="item for item in resistorBandDDropDown"></select>
+            </div>
+        </div>
+        <div class="row row-margin">
+            <div class="col-md-3">
+                <button class="btn btn-default" ng-disabled="isDropdownDisabled()" ng-click="calculate()">Calculate</button>
+            </div>
+        </div>
+        <div ng-show="isResultVisible()" class="row">
+            <div class="col-md-6">
+                <label>Ohm Value:</label> {{ohmValue}} Ω ± {{tolerance}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/scripts/angular.min.js"></script>
+<script src="~/scripts/OhmValueCalculatorController.js"></script>
